@@ -7,7 +7,6 @@ import (
 	pb "github.com/NajmiddinAbdulhakim/iman/api-gateway/genproto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"google.golang.org/grpc/internal/resolver"
 	"google.golang.org/grpc/resolver"
 )
 
