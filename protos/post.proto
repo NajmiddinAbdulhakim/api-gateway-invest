@@ -3,7 +3,7 @@ syntax = "proto3";
 package iman;
 
 
-service PostService {
+service GetService {
     rpc GetInfoFromAPI(Empty) returns (GetNetRes);
     rpc CreatePost(CreatePostsReq) returns (CreatePostsRes);
     rpc GetNetThenInsertDB (Empty) returns (CreatePostsRes);
