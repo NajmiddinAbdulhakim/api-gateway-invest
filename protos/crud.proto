@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package iman;
+import "post.proto";
+
+service CRUDService {
+    rpc CreatePost(Post) returns (Post);
+    rpc GetPostById(PostByIdReq) returns (Post);
+    rpc UpdatePost(Post) returns (Post);
+    rpc DeletePost(PostByIdReq) returns (DeleteRes);
+    rpc ListPosts(PostListReq) returns (PostListRes);
+}
+
+// message Post {
+//     int64 id = 1;
+//     int64 user_id = 2;
+//     string title = 3;
+//     string body = 4;
+// }
+
+message PostByIdReq{
+    int64 id = 1;
+}
+
+message DeleteRes {
+    bool success = 1;
+}
+
+
+message PostListRes {
+    repeated Post posts = 1;
+}
+
+message PostListReq {
+    int64 page = 1;
+    int64 limit = 2;
+}
