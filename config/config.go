@@ -13,19 +13,21 @@ type Config struct {
 	CRUDServiceHost string
 	CRUDServicePort int
 
-	HTTPPort int
+	HTTPPort string
 }
 
-func Load() {
+func Load() Config {
 	c := Config{}
 
-	c.HTTPPort = cast.ToInt(look(`HTTP_PORT`, 9999))
+	c.HTTPPort = cast.ToString(look(`HTTP_PORT`, `:9999`))
 
 	c.GetServiceHost = cast.ToString(look(`GET_SERVICE_HOST`, `127.0.0.1`))
 	c.GetServicePort = cast.ToInt(look(`GET_SERVICE_PORT`, 8000))
 
 	c.CRUDServiceHost = cast.ToString(look(`CRUD_SERVICE_HOST`, `127.0.0.1`))
-	c.GetServicePort = cast.ToInt(look(`CRUD_SERVICE_PORT`, 9000))
+	c.CRUDServicePort = cast.ToInt(look(`CRUD_SERVICE_PORT`, 9000))
+
+	return c
 }
 
 func look(key string, defaultValue interface{}) interface{} {

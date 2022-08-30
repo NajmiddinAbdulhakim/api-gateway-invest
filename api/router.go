@@ -23,15 +23,15 @@ func New(o *Option) *gin.Engine {
 	crud := router.Group("/")
 	{
 		crud.POST(`posts`, handler.CreatePost)
-		crud.GET(`posts/{id}`, handler.GetPost)
-		crud.PUT(`posts/{id}`, handler.UpdatePost)
-		crud.DELETE(`posts{id}`, handler.DeletePost)
+		crud.GET(`posts/:id`, handler.GetPost)
+		crud.PUT(`posts/:id`, handler.UpdatePost)
+		crud.DELETE(`posts/:id`, handler.DeletePost)
 		crud.GET(`posts`, handler.ListPosts)
 	}
 
 	web := router.Group("/")
 	{
-		web.GET(`posts`, handler.GetInfoFromNetANDInsertDB)
+		web.GET(`get-insert`, handler.GetInfoFromNetANDInsertDB)
 	}
 
 	router.Run()

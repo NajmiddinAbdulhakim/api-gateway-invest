@@ -28,7 +28,7 @@ func (s *serviceManager) CRUDService() pb.CRUDServiceClient {
 	return s.crudService
 }
 
-func NewServiceManager(conf *config.Config) (IServiceManager, error) {
+func NewServiceManager(conf config.Config) (IServiceManager, error) {
 	resolver.SetDefaultScheme("dns")
 
 	connGet, err := grpc.Dial(

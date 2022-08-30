@@ -53,7 +53,7 @@ func (h *handler) GetPost(c *gin.Context) {
 	)
 	jspbMarshal.UseProtoNames = true
 
-	getId, err := strconv.ParseInt(c.Param(`id`), 10, 64)
+	getId, err := strconv.ParseInt(c.Param("id"), 10, 64)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": `argument not integer`,
@@ -156,7 +156,7 @@ func (h *handler) DeletePost(c *gin.Context) {
 }
 
 // ListPosts returns list of posts
-// route /posts/{id} [get]
+// route /posts [get]
 func (h *handler) ListPosts(c *gin.Context) {
 	var (
 		jspbMarshal protojson.MarshalOptions
@@ -168,7 +168,7 @@ func (h *handler) ListPosts(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": `argument not integer for page`,
 		})
-		log.Println(`failed to argument not integer fot page: `, err.Error())
+		log.Println(`failed to argument not integer for page: `, err.Error())
 		return
 	}
 

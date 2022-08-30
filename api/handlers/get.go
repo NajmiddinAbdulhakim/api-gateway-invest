@@ -20,7 +20,7 @@ func (h *handler) GetInfoFromNetANDInsertDB(c *gin.Context) {
 	)
 	jspbMarshal.UseProtoNames = true
 
-	ctx, cancel := context.WithTimeout(context.Background(), time.Minute*time.Duration(1))
+	ctx, cancel := context.WithTimeout(context.Background(), time.Minute*time.Duration(2))
 	defer cancel()
 
 	info, err := h.serviceManager.GetService().GetInfoFromAPI(ctx, &empty)
@@ -32,7 +32,7 @@ func (h *handler) GetInfoFromNetANDInsertDB(c *gin.Context) {
 		return
 	}
 
-	ctx, cancel = context.WithTimeout(context.Background(), time.Second*time.Duration(15))
+	ctx, cancel = context.WithTimeout(context.Background(), time.Second*time.Duration(30))
 	defer cancel()
 	
 	res, err := h.serviceManager.GetService().CreatePost(ctx, &pb.CreatePostsReq{
